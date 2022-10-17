@@ -18,12 +18,32 @@ namespace JC.BluetoothUnity.Demo
         {
             _resultTemplate.gameObject.SetActive(false);
             _startSearchButt.onClick.AddListener(StartSearching);
+            
+            PinButtons.OnButtonClicked += OnPinButtonClicked;
         }
 
-        // Update is called once per frame
-        void Update()
+        /// <summary>
+        /// This function is called when the MonoBehaviour will be destroyed.
+        /// </summary>
+        void OnDestroy()
         {
-            
+            PinButtons.OnButtonClicked -= OnPinButtonClicked;            
+        }
+
+        void OnPinButtonClicked(PinButtons.ButtonAction action)
+        {
+            switch(action)
+            {
+                case PinButtons.ButtonAction.CLR:
+                    _pinInputField.text = "";
+                    break;
+                case PinButtons.ButtonAction.BACK:
+                    _pinInputField.text = _pinInputField.text.Substring(0, _pinInputField.text.Length-1);
+                    break;
+                default:
+                    _pinInputField.text += (int)action;
+                    break;
+            }
         }
 
         public void StartSearching()

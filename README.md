@@ -1,4 +1,4 @@
 # PicoXR Blutooth Connector
 
-Connect to bluetooth with PIN on Pico VR Devices.
+Connect to bluetooth device with/without PIN on Pico VR Devices.
 

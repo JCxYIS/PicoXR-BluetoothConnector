@@ -36,6 +36,10 @@ namespace JC.BluetoothUnity.Demo
         {
             Destroy(_currentPanel);
             _currentPanel = Instantiate(_panels[(int)panel]);
+            _currentPanel.GetComponent<Canvas>().worldCamera = Camera.main;
+            RectTransform rt = (RectTransform)_currentPanel.transform;
+            rt.pivot = Vector2.one / 2;
+            rt.anchoredPosition = Vector2.zero;
         }
     }
 }
